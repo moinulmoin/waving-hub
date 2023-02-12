@@ -8,12 +8,11 @@ const main = async () => {
 	waveCount = await waveContract.getTotalWaves();
 	console.log(waveCount.toNumber());
 
-	let waveTxn = await waveContract.wave('Hello!');
+	const waveTxn = await waveContract.wave('Wassap, I am waving 1!');
 	await waveTxn.wait();
 
-	const [_, randomPerson] = await hre.ethers.getSigners();
-	waveTxn = await waveContract.connect(randomPerson).wave('Wassap!');
-	await waveTxn.wait();
+	const waveTxn2 = await waveContract.wave('Wassap, I am waving 2!');
+	await waveTxn2.wait();
 
 	let allWaves = await waveContract.getAllWaves();
 	console.log(allWaves);
